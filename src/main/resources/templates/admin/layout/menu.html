@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="layoutSidenav_nav" th:fragment="menu">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <div class="sb-sidenav-menu-heading">Core</div>
+                <a class="nav-link" href="index.html">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Quản lý lịch hẹn
+                </a>
+                <div class="sb-sidenav-menu-heading">Page</div>
+                <a class="nav-link collapsed" th:href="@{/admin/patient}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Quản lý bệnh nhân
+                </a>
+                <a class="nav-link collapsed" href="#">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Quản lý phiếu khám bệnh
+                </a>
+                <a class="nav-link collapsed" href="#">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Quản lý kho thuốc
+                </a>
+            </div>
+        </div>
+        <div class="sb-sidenav-footer">
+            <div class="small">Logged in as:</div>
+            Start Bootstrap
+        </div>
+    </nav>
+</div>
+</body>
+</html>

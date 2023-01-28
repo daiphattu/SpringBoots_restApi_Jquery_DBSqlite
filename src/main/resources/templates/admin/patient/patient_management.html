@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/admin/index :: dynamic(~{::body})}">
+<head>
+</head>
+<body>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Dashboard</h1>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Quản lý bệnh nhân
+            </div>
+            <div class="card-body">
+                <table id="patientTbl" class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="col-lg-1 text-center" th:text="${@environment.getProperty('patient.mgn.table.col.no')}">No</th>
+                        <th class="col-lg-4 text-center" th:text="${@environment.getProperty('patient.mgn.table.col.name')}">Patient name</th>
+                        <th class="col-lg-1 text-center" th:text="${@environment.getProperty('patient.mgn.table.col.gender')}">Gender</th>
+                        <th class="col-lg-2 text-center" th:text="${@environment.getProperty('patient.mgn.table.col.birthday')}">Birthday</th>
+                        <th class="col-lg-2 text-center" th:text="${@environment.getProperty('patient.mgn.table.col.address')}">Address</th>
+                        <th class="col-lg-2 text-center" th:text="${@environment.getProperty('patient.mgn.table.col.phone')}">Phone</th>
+                        <th class="col-lg-2 text-center" th:text="${@environment.getProperty('patient.mgn.table.col.action')}">Actions</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script th:src="@{/admin/patient.js}"></script>
+</body>
+</html>
