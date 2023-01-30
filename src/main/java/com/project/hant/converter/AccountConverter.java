@@ -1,8 +1,10 @@
 package com.project.hant.converter;
 
-import com.project.hantn.dao.AccountDao;
+import com.project.hant.dao.AccountDao;
 import com.project.hant.entity.AccountEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AccountConverter {
     public AccountEntity toEntity(AccountDao dto) {
         AccountEntity entity = new AccountEntity();

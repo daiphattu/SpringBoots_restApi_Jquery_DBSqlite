@@ -29,11 +29,7 @@ public class PatientEntity extends BaseEntity {
     @Column(name = "phone_patient", nullable = false)
     private String phonePatient;
 
-    @Column(name = "insurance_patient", nullable = false)
-    private String InsurancePatient;
-
     @Column(name = "id_card", nullable = false)
     private String idCard;
-
 
 }

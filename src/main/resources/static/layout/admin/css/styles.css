@@ -384,7 +384,12 @@ button:not(:disabled),
 [type=submit]:not(:disabled) {
   cursor: pointer;
 }
-
+.txt-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
 ::-moz-focus-inner {
   padding: 0;
   border-style: none;
@@ -547,6 +552,11 @@ progress {
   }
 }
 
+.scrollspy-example {
+  height: 690px;
+  margin-top: 0.5rem;
+  overflow: auto;
+}
 .display-6 {
   font-size: calc(1.375rem + 1.5vw);
   font-weight: 300;

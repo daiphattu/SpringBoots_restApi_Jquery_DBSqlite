@@ -1,4 +1,4 @@
-package com.project.hantn.dao;
+package com.project.hant.dao;
 
 import lombok.Getter;
 import lombok.Setter;
