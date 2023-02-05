@@ -40,9 +40,16 @@ public class PatientServiceImpl implements PatientService {
         PatientDTO result = null;
         PatientEntity patientEntity = patientConverter.toEntity(patientDTO);
         if(patientDTO.getId() != null) {
-            //update
+            //update patient
+            PatientEntity entity = patientRepository.getPtnById(patientDTO.getId());
+            patientEntity.setId(entity.getId());
+
+            patientEntity.setStatus(CommonStatus.WORKING.getIntStatus());
+            patientEntity.setDeleteStatus(CommonStatus.NOT_DELETED.getIntStatus());
+
+            result = patientConverter.toDTO(patientRepository.save(patientEntity));
         }else {
-            //create new version
+            //create new patient
             patientEntity.setStatus(CommonStatus.WORKING.getIntStatus());
             patientEntity.setDeleteStatus(CommonStatus.NOT_DELETED.getIntStatus());
 
@@ -58,5 +65,17 @@ public class PatientServiceImpl implements PatientService {
         }
         PatientEntity entity = patientRepository.getPtnById(ptnId);
         return patientConverter.toDTO(entity);
+    }
+
+    @Override
+    public PatientDTO deleteById(Long ptnId) {
+        if(ptnId == null) {
+            throw new ConflictException("patient is not existed!");
+        }
+        PatientEntity entity = patientRepository.getPtnById(ptnId);
+
+        entity.setStatus(CommonStatus.NOT_WORKING.getIntStatus());
+        entity.setDeleteStatus(CommonStatus.DELETED.getIntStatus());
+        return patientConverter.toDTO(patientRepository.save(entity));
     }
 }

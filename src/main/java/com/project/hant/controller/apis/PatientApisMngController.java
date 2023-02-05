@@ -35,11 +35,30 @@ public class PatientApisMngController {
     }
 
     @GetMapping("/get/{ptnId}")
-    public ResponseEntity<?> getVersionById(@PathVariable("ptnId") Long ptnId){
+    public ResponseEntity<?> getPatientById(@PathVariable("ptnId") Long ptnId){
         if(ptnId == null){
             return new ResponseEntity<>("Patient not existed!", HttpStatus.INTERNAL_SERVER_ERROR);
         }
         PatientDTO dto = patientService.getById(ptnId);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
+
+    @PostMapping("/update/{id}")
+    public ResponseEntity<?> updatePatient(@PathVariable(value = "id") Long ptnId,@RequestBody() PatientDTO patientDTO){
+        if (patientDTO == null) {
+            return new ResponseEntity<>("Cannot create patient", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        patientDTO.setId(ptnId);
+        PatientDTO dto= patientService.save(patientDTO);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{ptnId}")
+    public ResponseEntity<?> deletePatient(@PathVariable("ptnId") Long ptnId){
+        if(ptnId == null){
+            return new ResponseEntity<>("Patient not existed!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        PatientDTO dto = patientService.deleteById(ptnId);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 }

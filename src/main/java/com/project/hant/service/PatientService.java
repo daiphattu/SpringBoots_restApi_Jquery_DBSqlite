@@ -9,4 +9,6 @@ public interface PatientService {
     PatientDTO save(PatientDTO patientDTO);
 
     PatientDTO getById(Long ptnId);
+
+    PatientDTO deleteById(Long ptnId);
 }

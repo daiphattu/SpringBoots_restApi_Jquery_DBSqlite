@@ -50,7 +50,7 @@ $(document).ready( () =>{
                             return  '<button type="button" id="update_' + data + '" value="' + data + '" class="btn btn-warning" data-toggle="modal" data-target="#updatePatientMdl">'+
                                      'Update'+
                                     '</button>' + ' ' +
-                                     '<button type="button" id="delete_' + data + '" value="' + data + '" class="btn btn-danger" data-toggle="modal" data-target="#">'+
+                                     '<button type="button" id="delete_' + data + '" value="' + data + '" class="btn btn-danger" data-toggle="modal" data-target="#deletePatientMdl">'+
                                     'Delete'+
                                     '</button>'+ ' ' +
                                     '<button type="button" id="detail_' + data + '" value="' + data + '" class="btn btn-info" data-toggle="modal" data-target="#">'+
@@ -143,7 +143,7 @@ let getActionBtnTbl = () =>{
 			$('#updatePatientMdl').modal('show');
 			updatePatientById(ptnId);
 		}else if(idBtn.includes(DELETE_STM)){
-			$('#deleteVrsMdl').modal('show');
+			$('#deletePatientMdl').modal('show');
 			deletePatientById(ptnId);
 		}
 	});
@@ -179,9 +179,69 @@ let findPatientById = (ptnId) => {
 }
 
 let updatePatientById = (ptnId) => {
-
+    if(ptnId){
+        $("#updatePatientMdl").on('click','#updatePtnBtn' , (e) => {
+            e.stopImmediatePropagation();
+            ptnObj.id = ptnId;
+            ptnObj.namePatient = $('#upPatientName').val();
+            ptnObj.genderPatient = $('input[name="gender"]:checked').val();
+            ptnObj.birthdayPatient = $('#upBirthdayPatient').val();
+            ptnObj.addressPatient = $('#upPatientAddress').val();
+            ptnObj.phonePatient = $('#upPatientPhone').val();
+            ptnObj.idCard = $('#upIdCardPatient').val();
+            console.log(ptnObj);
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: UPDATE_PATIENT_BY_ID + ptnId,
+                data: JSON.stringify(ptnObj),
+                // headers: { Authorization: 'Bearer ' + TOKEN },
+                dataType: "json",
+                success: (response) => {
+                    clearModalProperties();
+                    getAllActivePatients(dataTablePatient);
+        //                clearModalProperties();
+                    $('#updatePatientMdl').modal('hide');
+                    toastr["success"]("Update patient successfully!", "SUCCESS");
+                },
+                error: (err) => {
+                    console.log(err);
+                    clearModalProperties();
+                    $('#updatePatientMdl').modal('hide');
+                    toastr["warning"]("Cannot update patient!", "ERROR");
+                }
+            });
+        });
+    }
 }
 
 let deletePatientById = (ptnId) => {
-
+    if(ptnId){
+        $("#deletePatientMdl").on('click','#deletePtnBtn' , (e) => {
+            $.ajax({
+                type: "DELETE",
+                contentType: "application/json",
+                url: DELETE_PATIENT_BY_ID + ptnId,
+                data: "data",
+                dataType: "json",
+                success: (response) => {
+                    getAllActivePatients(dataTablePatient);
+                    $('#deletePatientMdl').modal('hide');
+                    toastr["success"]("Delete patient successfully!", "SUCCESS");
+                },
+                error: (err) => {
+                    console.log(err);
+                    if (err.status === 200) {
+                        getAllActivePatients(dataTablePatient);
+                        $('#deletePatientMdl').modal('hide');
+                        toastr["success"](err.responseText, "SUCCESS");
+                    } else if (err.status === 400) {
+                        toastr["warning"](err.responseJSON.message, "ERROR");
+                    } else {
+                        toastr["warning"](err.responseJSON.message, "ERROR");
+                    }
+                }
+            });
+        });
+    }
 }
