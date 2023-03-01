@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/admin/index :: dynamic(~{::body})}">
+<head>
+</head>
+<body>
+
+    <script>
+		/*<![CDATA[*/
+			GET_ALL_ACTIVE_PATIENTS="[[${@environment.getProperty('url.get.list.patient.active')}]]";
+			CREATE_NEW_PATIENT="[[${@environment.getProperty('url.create.patient.mng')}]]";
+			GET_PATIENT_BY_ID="[[${@environment.getProperty('url.get.patient.mng.byId')}]]";
+			UPDATE_PATIENT_BY_ID="[[${@environment.getProperty('url.update.patient.mng.byId')}]]";
+			DELETE_PATIENT_BY_ID="[[${@environment.getProperty('url.delete.patient.mng.byId')}]]";
+    	/*]]>*/
+	</script>
+
+    <div class="container-fluid">
+        <h1 class="mt-4" th:text="${@environment.getProperty('screen.exm.result.title')}">Dashboard</h1>
+        <div class="card mb-4">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-lg-11">
+                        <i class="fas fa-table me-1"></i>
+                        Quản lý kết quả khám bệnh
+                    </div>
+                    <div class="col-lg-1">
+                        <button type="button" class="btn btn-primary" id="createExmResultBtn" data-toggle="modal" data-target="#createExmResultMdl">create</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-body">
+                <table id="exmResultTbl" class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="col-lg-1 text-center" th:text="${@environment.getProperty('patient.mgn.table.col.no')}">No</th>
+                        <th class="col-lg-3 text-center" th:text="${@environment.getProperty('patient.mgn.table.col.name')}">Patient name</th>
+                        <th class="col-lg-1 text-center" th:text="${@environment.getProperty('patient.mgn.table.col.gender')}">Gender</th>
+                        <th class="col-lg-1 text-center" th:text="${@environment.getProperty('patient.mgn.table.col.birthday')}">Birthday</th>
+                        <th class="col-lg-2 text-center" th:text="${@environment.getProperty('patient.mgn.table.col.address')}">Address</th>
+                        <th class="col-lg-2 text-center" th:text="${@environment.getProperty('patient.mgn.table.col.phone')}">Phone</th>
+                        <th class="col-lg-3 text-center" th:text="${@environment.getProperty('patient.mgn.table.col.action')}">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/admin/patient_management.js}"></script>
+    <div th:replace="~{/admin/exmResult/create_exm_result.html::createExmResult}"></div>
+    <div th:replace="~{/admin/exmResult/update_exm_result.html::updateExmResult}"></div>
+    <div th:replace="~{/admin/exmResult/delete_exm_result.html::deleteExmResult}"></div>
+</body>
+</html>

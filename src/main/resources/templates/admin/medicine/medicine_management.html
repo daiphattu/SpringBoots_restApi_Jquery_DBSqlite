@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/admin/index :: dynamic(~{::body})}">
+<meta charset="utf-8">
+<head>
+</head>
+<body>
+
+    <script>
+		/*<![CDATA[*/
+			GET_ALL_ACTIVE_MEDICINE="[[${@environment.getProperty('url.get.list.medicine.active')}]]";
+			CREATE_NEW_MEDICINE="[[${@environment.getProperty('url.create.medicine.mng')}]]";
+			GET_MEDICINE_BY_ID="[[${@environment.getProperty('url.get.medicine.mng.byId')}]]";
+			UPDATE_MEDICINE_BY_ID="[[${@environment.getProperty('url.update.medicine.mng.byId')}]]";
+			DELETE_MEDICINE_BY_ID="[[${@environment.getProperty('url.delete.medicine.mng.byId')}]]";
+    	/*]]>*/
+	</script>
+
+    <div class="container-fluid">
+        <h1 class="mt-4" th:text="${@environment.getProperty('screen.medicine.title')}">Dashboard</h1>
+        <div class="card mb-4">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-lg-11">
+                        <i class="fas fa-table me-1"></i>
+                        Quản lý kho thuốc
+                    </div>
+                    <div class="col-lg-1">
+                        <button type="button" class="btn btn-primary" id="createPatientBtn" data-toggle="modal" data-target="#createMedicineMdl">create</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-body">
+                <table id="medicineTbl" class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="col-lg-1 text-center" th:text="${@environment.getProperty('medicine.mgn.table.col.no')}">No</th>
+                        <th class="col-lg-3 text-center" th:text="${@environment.getProperty('medicine.mgn.table.col.name')}">Name of medicine</th>
+                        <th class="col-lg-1 text-center" th:text="${@environment.getProperty('medicine.mgn.table.col.effect')}">Effect of medicine</th>
+                        <th class="col-lg-1 text-center" th:text="${@environment.getProperty('medicine.mgn.table.col.price')}">Price</th>
+                        <th class="col-lg-2 text-center" th:text="${@environment.getProperty('medicine.mgn.table.col.quantity')}">Quantity</th>
+                        <th class="col-lg-2 text-center" th:text="${@environment.getProperty('medicine.mgn.table.col.producer')}">Producer</th>
+                        <th class="col-lg-3 text-center" th:text="${@environment.getProperty('medicine.mgn.table.col.action')}">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script th:src="@{/admin/medicine_management.js}"></script>
+    <div th:replace="~{/admin/medicine/create_medicine.html::createMedicine}"></div>
+    <div th:replace="~{/admin/medicine/update_medicine.html::updateMedicine}"></div>
+    <div th:replace="~{/admin/medicine/delete_medicine.html::deleteMedicine}"></div>
+</body>
+</html>

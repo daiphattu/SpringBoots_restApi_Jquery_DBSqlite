@@ -5,7 +5,7 @@ import com.project.hant.entity.PatientEntity;
 import com.project.hant.exceptions.ConflictException;
 import com.project.hant.repositories.PatientRepository;
 import com.project.hant.service.PatientService;
-import com.project.hant.dao.PatientDTO;
+import com.project.hant.dtos.PatientDTO;
 import com.project.hant.utils.CommonStatus;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;

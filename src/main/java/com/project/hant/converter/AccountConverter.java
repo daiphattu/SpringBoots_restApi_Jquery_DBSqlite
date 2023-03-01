@@ -1,6 +1,6 @@
 package com.project.hant.converter;
 
-import com.project.hant.dao.AccountDao;
+import com.project.hant.dtos.AccountDao;
 import com.project.hant.entity.AccountEntity;
 import org.springframework.stereotype.Component;
 

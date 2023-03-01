@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="modal fade" id="updateMedicineMdl"  data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" th:fragment="updateMedicine">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Medicine</h5>
+        <span class="badge badge-pill badge-primary" id="updMdc">medicine</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <span class="input-group-text">Tên thuốc</span>
+          <input type="text" class="form-control" id="upNameOfMedicine">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Công dụng thuốc</span>
+          <input type="text" class="form-control" id="upEffectOfMedicine">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Giá thuốc</span>
+          <input type="text" class="form-control" id="upPrice">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Số lượng</span>
+          <input type="text" class="form-control" id="upQuantity">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Nhà sản xuất</span>
+          <input type="text" class="form-control" id="upProducer">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">CANCEL</button>
+        <button type="button" id="updateMdcBtn" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@ package com.project.hant.controller.apis;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.project.hant.dao.AccountDao;
+import com.project.hant.dtos.AccountDao;
 
 @Slf4j
 @RestController

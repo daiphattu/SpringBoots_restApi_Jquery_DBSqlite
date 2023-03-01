@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="modal fade" id="createMedicineMdl"  data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" th:fragment="createMedicine">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create Medicine</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Tên thuốc</span>
+                    <input type="text" class="form-control" id="nameOfMedicine">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Công dụng thuốc</span>
+                    <input type="text" class="form-control" id="effectOfMedicine">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Giá thuốc</span>
+                    <input type="text" class="form-control" id="price">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Số lượng</span>
+                    <input type="text" class="form-control" id="quantity">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Nhà sản xuất</span>
+                    <input type="text" class="form-control" id="producer">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">CANCEL</button>
+                <button type="button" id="createMdcBtn" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -2,7 +2,7 @@ package com.project.hant.converter;
 
 import com.project.hant.entity.PatientEntity;
 import org.springframework.stereotype.Component;
-import com.project.hant.dao.PatientDTO;
+import com.project.hant.dtos.PatientDTO;
 
 @Component
 public class PatientConverter {

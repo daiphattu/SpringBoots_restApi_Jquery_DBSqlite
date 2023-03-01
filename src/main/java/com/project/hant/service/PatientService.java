@@ -1,7 +1,7 @@
 package com.project.hant.service;
 
 import java.util.List;
-import com.project.hant.dao.PatientDTO;
+import com.project.hant.dtos.PatientDTO;
 
 public interface PatientService {
     List<PatientDTO> getAllActPatient();

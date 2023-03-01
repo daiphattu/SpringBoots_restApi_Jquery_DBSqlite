@@ -24,4 +24,9 @@ public class MedicineEntity extends BaseEntity{
     @Column(name = "price_of_medicine", nullable = false)
     private String priceOfMedicine;
 
+    @Column(name = "quantity", nullable = false)
+    private String quantity;
+
+    @Column(name = "producer_of_medicine", nullable = false)
+    private String producer;
 }
